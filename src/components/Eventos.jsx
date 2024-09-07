@@ -1,25 +1,62 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 
+const facultades = [
+  { nombre: "Todas", abreviatura: "Todas" },
+  { nombre: "Facultad de Ingeniería", abreviatura: "FAING" },
+  {
+    nombre: "Facultad de Educación, Ciencias de la Comunicación y Humanidades",
+    abreviatura: "FAEDCOH",
+  },
+  { nombre: "Facultad de Derecho y Ciencias Políticas", abreviatura: "FADE" },
+  { nombre: "Facultad de Ciencias de la Salud", abreviatura: "FACSA" },
+  { nombre: "Facultad de Ciencias Empresariales", abreviatura: "FACEM" },
+  { nombre: "Facultad de Arquitectura y Urbanismo", abreviatura: "FAU" },
+]
+
 const Eventos = () => {
   const [events, setEvents] = useState([])
+  const [filteredEvents, setFilteredEvents] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [selectedFacultad, setSelectedFacultad] = useState("Todas")
+  const [showVigentes, setShowVigentes] = useState(false)
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:50995/evento")
+        const response = await axios.get("http://localhost:5298/evento")
         setEvents(response.data)
+        setFilteredEvents(response.data)
       } catch (err) {
         setError("No se pudieron cargar los eventos")
       } finally {
         setLoading(false)
       }
     }
-
     fetchEvents()
   }, [])
+
+  useEffect(() => {
+    filterEvents()
+  }, [selectedFacultad, showVigentes])
+
+  const filterEvents = () => {
+    let filtered = events
+
+    if (selectedFacultad !== "Todas") {
+      filtered = filtered.filter((event) => event.facultad === selectedFacultad)
+    }
+
+    if (showVigentes) {
+      const currentDate = new Date()
+      filtered = filtered.filter(
+        (event) => new Date(event.fechaTermino) >= currentDate
+      )
+    }
+
+    setFilteredEvents(filtered)
+  }
 
   if (loading)
     return (
@@ -75,13 +112,41 @@ const Eventos = () => {
             Eventos Destacados
           </h2>
 
-          {events.length === 0 ? (
+          <div className='mb-8'>
+            <label htmlFor='facultad' className='mr-4'>
+              Filtrar por Facultad:
+            </label>
+            <select
+              id='facultad'
+              className='border p-2 rounded'
+              value={selectedFacultad}
+              onChange={(e) => setSelectedFacultad(e.target.value)}
+            >
+              {facultades.map((facultad) => (
+                <option key={facultad.abreviatura} value={facultad.abreviatura}>
+                  {facultad.nombre}
+                </option>
+              ))}
+            </select>
+
+            <label htmlFor='vigentes' className='ml-6 mr-2'>
+              Mostrar solo eventos vigentes:
+            </label>
+            <input
+              id='vigentes'
+              type='checkbox'
+              checked={showVigentes}
+              onChange={() => setShowVigentes(!showVigentes)}
+            />
+          </div>
+
+          {filteredEvents.length === 0 ? (
             <p className='text-center text-gray-700 text-lg'>
               No hay eventos disponibles en este momento.
             </p>
           ) : (
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-12'>
-              {events.map((event) => (
+              {filteredEvents.map((event) => (
                 <div
                   key={event.id}
                   className='bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out border border-gray-200'
