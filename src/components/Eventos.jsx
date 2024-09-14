@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { config } from "../config";
+
 
 const facultades = [
   { nombre: "Todas", abreviatura: "Todas" },
@@ -25,8 +27,7 @@ const Eventos = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const EventoApi = `${import.meta.env.VITE_SERVER_EVENTO}/Evento`;
-
+        const EventoApi = `${config.VITE_SERVER_EVENTO}/Evento`;
         const response = await axios.get(EventoApi);
         setEvents(response.data);
         setFilteredEvents(response.data);
