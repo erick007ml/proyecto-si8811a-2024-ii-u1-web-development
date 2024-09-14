@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaMicrosoft } from 'react-icons/fa';
-import background from '../assets/background.png';
+import background from '../assets/background_1.png';
 
 const Login = () => {
   const handleLogin = () => {
