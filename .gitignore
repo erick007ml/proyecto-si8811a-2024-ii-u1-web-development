@@ -23,3 +23,14 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Coverage directory
+coverage/
+
+# SonarQube specific
+sonar-project.properties
+sonar-scanner.bat
+.scannerwork/
+
+# Archivos de log
+*.log
