@@ -1,6 +1,11 @@
 import { axiosEvento } from '../axiosInstances'
 
-export const getEventos = async () => {
-  const response = await axiosEvento.get('/Evento')
-  return response.data
+export const getEvents = async () => {
+  try {
+    const response = await axiosEvento.get('/Evento')
+    return response.data
+  } catch (error) {
+    console.error('Error fetching events:', error)
+    throw error
+  }
 }

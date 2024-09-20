@@ -1,31 +1,32 @@
 import { useEffect, useState } from 'react'
-import { getEventos } from '../api/services/eventoApi'
 import { facultades } from '../constants/facultades'
 import EventCard from '../components/EventCard'
 import DefaultLayout from '../components/layouts/DefaultLayout'
+import { useEventStore } from '../hooks/useEventStore'
 
 const Eventos = () => {
-  const [events, setEvents] = useState([])
   const [filteredEvents, setFilteredEvents] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [selectedFacultad, setSelectedFacultad] = useState('Todas')
   const [showVigentes, setShowVigentes] = useState(false)
+  const { events, startLoadingEvents } = useEventStore()
 
   useEffect(() => {
-    const fetchEvents = async () => {
+    const loadEvents = async () => {
       try {
-        const data = await getEventos()
-        setEvents(data)
-        setFilteredEvents(data)
+        await startLoadingEvents()
+        console.log(events)
+        setFilteredEvents(events)
       } catch (err) {
-        setError('No se pudieron cargar los eventos', err)
+        console.error(err)
+        setError('No se pudieron cargar los eventos')
       } finally {
         setLoading(false)
       }
     }
-    fetchEvents()
-  }, [])
+    loadEvents()
+  }, [events])
 
   useEffect(() => {
     filterEvents()

@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaMicrosoft } from 'react-icons/fa'
 import background from '../assets/background_recomprimido.webp'
 

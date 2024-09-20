@@ -1,33 +1,33 @@
-import { render, screen, waitFor, act } from "@testing-library/react"
-import Eventos from "../../src/components/Eventos"
-import axios from "axios"
+import { render, screen, waitFor, act } from '@testing-library/react'
+import Eventos from '../../src/pages/Eventos'
+import axios from 'axios'
 
-jest.mock("axios")
+jest.mock('axios')
 
-describe("Eventos Component", () => {
+describe('Eventos Component', () => {
   beforeEach(() => {
     axios.get.mockResolvedValue({
       data: [
         {
           id: 1,
-          nombre: "Futbol",
-          fechaInicio: "2024-09-10",
-          fechaTermino: "2024-09-13",
-          facultad: "FAING",
+          nombre: 'Futbol',
+          fechaInicio: '2024-09-10',
+          fechaTermino: '2024-09-13',
+          facultad: 'FAING',
         },
       ],
     })
   })
 
-  test("debe mostrar el titulo de Juegos Florales", async () => {
+  test('debe mostrar el titulo de Juegos Florales', async () => {
     await act(async () => {
       render(<Eventos />)
     })
-    const titleElement = screen.getByTestId("title")
+    const titleElement = screen.getByTestId('title')
     expect(titleElement).toBeTruthy()
   })
 
-  test("debe mostrar el evento de futbol cuando se carga correctamente", async () => {
+  test('debe mostrar el evento de futbol cuando se carga correctamente', async () => {
     await act(async () => {
       render(<Eventos />)
     })
@@ -38,8 +38,8 @@ describe("Eventos Component", () => {
     })
   })
 
-  test("debe mostrar un mensaje de error cuando falla la carga", async () => {
-    axios.get.mockRejectedValue(new Error("Network error"))
+  test('debe mostrar un mensaje de error cuando falla la carga', async () => {
+    axios.get.mockRejectedValue(new Error('Network error'))
 
     await act(async () => {
       render(<Eventos />)
