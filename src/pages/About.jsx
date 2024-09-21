@@ -1,5 +1,5 @@
 import DefaultLayout from '../components/layouts/DefaultLayout'
-import backgroundImage from '../assets/background_2.png'; // Importar la imagen
+import backgroundImage from '../assets/background_about.png'; // Importar la imagen
 
 const About = () => {
   return (
