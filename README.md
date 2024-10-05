@@ -114,7 +114,12 @@ proyecto-si8811a-2024-ii-u1-web-development/
    ```
 2. Abre [http://localhost:3000](http://localhost:3000) para ver la aplicación en tu navegador.
 
+flowchart LR
 
+A[Hard] -->|Text| B(Round)
+B --> C{Decision}
+C -->|One| D[Result 1]
+C -->|Two| E[Result 2]
 
 
 
