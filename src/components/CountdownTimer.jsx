@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 
 const CountdownTimer = ({ targetDate }) => {
+  
+  
+
   const calculateTimeLeft = () => {
     const now = new Date();
     const difference = targetDate - now;
@@ -32,7 +35,8 @@ const CountdownTimer = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div>
+      <div className="grid grid-cols-4 gap-4">
     {Object.keys(timeLeft).length > 0 ? (
       Object.entries(timeLeft).map(([unit, value]) => (
         <div
@@ -46,12 +50,15 @@ const CountdownTimer = ({ targetDate }) => {
         </div>
       ))
     ) : (
-      <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center justify-center">
-        <span className="text-4xl font-bold text-gray-800 text-center">
-          Ya empezó 
-        </span>
-      </div>
+     null
     )}
+  </div>
+  {
+     <div className="bg-white p-4 rounded-lg shadow-lg flex flex-col items-center justify-center">
+     <span className="text-2xl font-bold text-gray-600 text-center">
+      {targetDate > new Date ? "Ya empezó " : "Evento culminado"}</span>
+   </div>
+  }
   </div>
   );
 };
