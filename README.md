@@ -117,21 +117,36 @@ proyecto-si8811a-2024-ii-u1-web-development/
 
 
 ```mermaid
-flowchart TD
-    A[Inicio] --> B[Visualizar Home]
-    B --> C[Consultar Eventos]
-    B --> D[Ver Equipos]
-    B --> E[Ver Participantes]
-    B --> F[Explorar Lugares]
-    B --> G[Acceder a Información de la Universidad]
-    B --> H[Iniciar Sesión]
+%%{ init : { "theme" : "default" } }%%
+%%{ config: { "themeVariables": { "actorFill": "#f9f", "actorStroke": "#f00" } } }%%
+%%{flowchart: {usecase: {}}}%%
+
+classDiagram
+    class Usuario {
+        <<Actor>>
+    }
     
-    C --> I[Eventos Disponibles]
-    D --> J[Equipos Participantes]
-    E --> K[Lista de Participantes]
-    F --> L[Ubicación de Eventos]
-    G --> M[Información General]
-    H --> N[Acceso a la Plataforma]
+    class VisualizarHome
+    class ConsultarEventos
+    class VerEquipos
+    class VerParticipantes
+    class ExplorarLugares
+    class AccederInformacion
+    class IniciarSesion
+
+    Usuario --> VisualizarHome
+    Usuario --> ConsultarEventos
+    Usuario --> VerEquipos
+    Usuario --> VerParticipantes
+    Usuario --> ExplorarLugares
+    Usuario --> AccederInformacion
+    Usuario --> IniciarSesion
+
+    VisualizarHome --> ConsultarEventos
+    VisualizarHome --> VerEquipos
+    VisualizarHome --> VerParticipantes
+    VisualizarHome --> ExplorarLugares
+    VisualizarHome --> AccederInformacion
 
 
 
