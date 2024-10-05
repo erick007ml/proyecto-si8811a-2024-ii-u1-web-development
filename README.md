@@ -114,12 +114,25 @@ proyecto-si8811a-2024-ii-u1-web-development/
    ```
 2. Abre [http://localhost:3000](http://localhost:3000) para ver la aplicación en tu navegador.
 
-flowchart LR
 
-A[Hard] -->|Text| B(Round)
-B --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
+
+```mermaid
+flowchart TD
+    A[Inicio] --> B[Visualizar Home]
+    B --> C[Consultar Eventos]
+    B --> D[Ver Equipos]
+    B --> E[Ver Participantes]
+    B --> F[Explorar Lugares]
+    B --> G[Acceder a Información de la Universidad]
+    B --> H[Iniciar Sesión]
+    
+    C --> I[Eventos Disponibles]
+    D --> J[Equipos Participantes]
+    E --> K[Lista de Participantes]
+    F --> L[Ubicación de Eventos]
+    G --> M[Información General]
+    H --> N[Acceso a la Plataforma]
+
 
 
 
