@@ -11,7 +11,6 @@ const Login = () => {
       className='relative flex items-center justify-center h-screen bg-cover bg-center'
       style={{ backgroundImage: `url(${background})` }}
     >
-      {/* Superposición oscura */}
       <div className='absolute inset-0 bg-black opacity-30'></div>
 
       <div className='relative w-full max-w-sm bg-white shadow-md rounded-lg p-6 z-10'>

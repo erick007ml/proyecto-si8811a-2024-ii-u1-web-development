@@ -22,8 +22,9 @@ const About = () => {
         </div>
       </div>
     </DefaultLayout>
-  )
-}
+    
+  );
+};
 
 const styles = {
   container: {
