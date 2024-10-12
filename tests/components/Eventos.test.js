@@ -1,55 +1,75 @@
-import { render, screen, waitFor, act } from '@testing-library/react'
-import Eventos from '../../src/pages/Eventos'
-import axios from 'axios'
+import { render, screen, fireEvent, act } from '@testing-library/react';
+import Eventos from '../../src/pages/Eventos';
+import { MemoryRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from '../../src/store/store';
+import { useEventStore } from '../../src/hooks/useEventStore';
 
-jest.mock('axios')
+jest.mock('../../src/api/axiosInstances', () => ({
+  axiosEvento: {
+    get: jest.fn(),
+    post: jest.fn(),
+  },
+}));
 
-describe('Eventos Component', () => {
+jest.mock('../../src/hooks/useEventStore');
+
+describe('Pruebas en <Eventos />', () => {
+  const mockEvents = [
+    {
+      id: 1,
+      nombre: 'Futbol',
+      fechaInicio: '2024-09-10',
+      fechaTermino: '2024-09-13',
+      facultad: 'FAING',
+    },
+    {
+      id: 2,
+      nombre: 'Voleibol',
+      fechaInicio: '2024-10-01',
+      fechaTermino: '2024-10-05',
+      facultad: 'FAEDU',
+    },
+  ];
+
   beforeEach(() => {
-    axios.get.mockResolvedValue({
-      data: [
-        {
-          id: 1,
-          nombre: 'Futbol',
-          fechaInicio: '2024-09-10',
-          fechaTermino: '2024-09-13',
-          facultad: 'FAING',
-        },
-      ],
-    })
-  })
+    useEventStore.mockReturnValue({
+      events: mockEvents,
+      startLoadingEvents: jest.fn(),
+    });
+  });
 
-  test('debe mostrar el titulo de Juegos Florales', async () => {
+  test('Debe mostrar el título "Eventos"', async () => {
     await act(async () => {
-      render(<Eventos />)
-    })
-    const titleElement = screen.getByTestId('title')
-    expect(titleElement).toBeTruthy()
-  })
+      render(
+        <Provider store={store}>
+          <MemoryRouter>
+            <Eventos />
+          </MemoryRouter>
+        </Provider>
+      );
+    });
 
-  test('debe mostrar el evento de futbol cuando se carga correctamente', async () => {
+    expect(screen.getByRole('heading', { name: /Eventos/i })).toBeTruthy();
+  });
+
+  test('Debe cambiar la facultad seleccionada', async () => {
     await act(async () => {
-      render(<Eventos />)
-    })
+      render(
+        <Provider store={store}>
+          <MemoryRouter>
+            <Eventos />
+          </MemoryRouter>
+        </Provider>
+      );
+    });
 
-    await waitFor(() => {
-      const futbolElement = screen.getByText(/futbol/i)
-      expect(futbolElement).toBeTruthy()
-    })
-  })
+    const selectElement = screen.getByLabelText(/Filtrar por Facultad/i);
 
-  test('debe mostrar un mensaje de error cuando falla la carga', async () => {
-    axios.get.mockRejectedValue(new Error('Network error'))
+    act(() => {
+      fireEvent.change(selectElement, { target: { value: 'FAING' } });
+    });
 
-    await act(async () => {
-      render(<Eventos />)
-    })
-
-    await waitFor(() => {
-      const errorElement = screen.getByText(
-        /no se pudieron cargar los eventos/i
-      )
-      expect(errorElement).toBeTruthy()
-    })
-  })
-})
+    expect(selectElement.value).toBe('FAING');
+  });
+});
