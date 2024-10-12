@@ -16,10 +16,8 @@ const Eventos = () => {
     const loadEvents = async () => {
       try {
         await startLoadingEvents()
-        console.log(events)
         setFilteredEvents(events)
       } catch (err) {
-        console.error(err)
         setError('No se pudieron cargar los eventos')
       } finally {
         setLoading(false)
