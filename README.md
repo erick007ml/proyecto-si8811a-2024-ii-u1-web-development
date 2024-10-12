@@ -132,7 +132,7 @@ classDiagram
     class VerParticipantes
     class ExplorarLugares
     class AccederInformacion
-    class IniciarSesion
+
 
     Usuario --> VisualizarHome
     Usuario --> ConsultarEventos
@@ -140,7 +140,7 @@ classDiagram
     Usuario --> VerParticipantes
     Usuario --> ExplorarLugares
     Usuario --> AccederInformacion
-    Usuario --> IniciarSesion
+
 
     VisualizarHome --> ConsultarEventos
     VisualizarHome --> VerEquipos
