@@ -149,7 +149,4 @@ classDiagram
     VisualizarHome --> AccederInformacion
 
 
-
-
-
-   
+![Diagrama Rutas](src/assets/Diagrama_Rutas.png)
