@@ -115,6 +115,7 @@ proyecto-si8811a-2024-ii-u1-web-development/
 2. Abre [http://localhost:3000](http://localhost:3000) para ver la aplicación en tu navegador.
 
 
+
 ```mermaid
 %%{ init : { "theme" : "default" } }%%
 %%{ config: { "themeVariables": { "actorFill": "#f9f", "actorStroke": "#f00" } } }%%
@@ -132,6 +133,7 @@ classDiagram
     class ExplorarLugares
     class AccederInformacion
     class IniciarSesion
+
     Usuario --> VisualizarHome
     Usuario --> ConsultarEventos
     Usuario --> VerEquipos
@@ -139,16 +141,15 @@ classDiagram
     Usuario --> ExplorarLugares
     Usuario --> AccederInformacion
     Usuario --> IniciarSesion
+
     VisualizarHome --> ConsultarEventos
     VisualizarHome --> VerEquipos
     VisualizarHome --> VerParticipantes
     VisualizarHome --> ExplorarLugares
     VisualizarHome --> AccederInformacion
 
-graph LR
-    Home --> About
-    Home --> Eventos
-    Home --> Equipos
-    Home --> Participantes
-    Home --> Lugares
-    Home --> Navigate
+
+
+
+
+   
