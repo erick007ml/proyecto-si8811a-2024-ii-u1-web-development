@@ -144,11 +144,3 @@ classDiagram
     VisualizarHome --> VerParticipantes
     VisualizarHome --> ExplorarLugares
     VisualizarHome --> AccederInformacion
-
-graph LR
-    Home.jsx['Home.jsx', '/'] --> About.jsx['About.jsx', '/about']
-    Home.jsx --> Eventos.jsx['Eventos.jsx', '/eventos']
-    Home.jsx --> Equipos.jsx['Equipos.jsx', '/equipos']
-    Home.jsx --> Participantes.jsx['Participantes.jsx', '/participantes']
-    Home.jsx --> Lugares.jsx['Lugares.jsx', '/lugares']
-    Home.jsx --> Navigate['Navigate to /', '/*']
