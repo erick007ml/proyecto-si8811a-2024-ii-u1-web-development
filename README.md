@@ -116,13 +116,10 @@ proyecto-si8811a-2024-ii-u1-web-development/
 
 
 
-## Diagrama de Clase 🖥️
-
 ```mermaid
 %%{ init : { "theme" : "default" } }%%
 %%{ config: { "themeVariables": { "actorFill": "#f9f", "actorStroke": "#f00" } } }%%
 %%{flowchart: {usecase: {}}}%%
-
 classDiagram
     class Usuario {
         <<Actor>>
@@ -134,24 +131,19 @@ classDiagram
     class VerParticipantes
     class ExplorarLugares
     class AccederInformacion
-
-
+    class IniciarSesion
     Usuario --> VisualizarHome
     Usuario --> ConsultarEventos
     Usuario --> VerEquipos
     Usuario --> VerParticipantes
     Usuario --> ExplorarLugares
     Usuario --> AccederInformacion
-
-
+    Usuario --> IniciarSesion
     VisualizarHome --> ConsultarEventos
     VisualizarHome --> VerEquipos
     VisualizarHome --> VerParticipantes
     VisualizarHome --> ExplorarLugares
     VisualizarHome --> AccederInformacion
-
-
-## Diagrama de Rutas 🖥️
 
 graph LR
     Home.jsx['Home.jsx', '/'] --> About.jsx['About.jsx', '/about']
@@ -160,4 +152,3 @@ graph LR
     Home.jsx --> Participantes.jsx['Participantes.jsx', '/participantes']
     Home.jsx --> Lugares.jsx['Lugares.jsx', '/lugares']
     Home.jsx --> Navigate['Navigate to /', '/*']
-
