@@ -119,6 +119,7 @@ proyecto-si8811a-2024-ii-u1-web-development/
 %%{ init : { "theme" : "default" } }%%
 %%{ config: { "themeVariables": { "actorFill": "#f9f", "actorStroke": "#f00" } } }%%
 %%{flowchart: {usecase: {}}}%%
+
 classDiagram
     class Usuario {
         <<Actor>>
@@ -145,9 +146,9 @@ classDiagram
     VisualizarHome --> AccederInformacion
 
 graph LR
-    Home.jsx['Home.jsx', '/'] --> About.jsx['About.jsx', '/about']
-    Home.jsx --> Eventos.jsx['Eventos.jsx', '/eventos']
-    Home.jsx --> Equipos.jsx['Equipos.jsx', '/equipos']
-    Home.jsx --> Participantes.jsx['Participantes.jsx', '/participantes']
-    Home.jsx --> Lugares.jsx['Lugares.jsx', '/lugares']
-    Home.jsx --> Navigate['Navigate to /', '/*']
+    Home["Home JSX, /"] --> About["About JSX, /about"]
+    Home --> Eventos["Eventos JSX, /eventos"]
+    Home --> Equipos["Equipos JSX, /equipos"]
+    Home --> Participantes["Participantes JSX, /participantes"]
+    Home --> Lugares["Lugares JSX, /lugares"]
+    Home --> Navigate["Navigate to /, /*"]
