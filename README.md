@@ -146,9 +146,9 @@ classDiagram
     VisualizarHome --> AccederInformacion
 
 graph LR
-    Home["Home JSX, /"] --> About["About JSX, /about"]
-    Home --> Eventos["Eventos JSX, /eventos"]
-    Home --> Equipos["Equipos JSX, /equipos"]
-    Home --> Participantes["Participantes JSX, /participantes"]
-    Home --> Lugares["Lugares JSX, /lugares"]
-    Home --> Navigate["Navigate to /, /*"]
+    Home --> About
+    Home --> Eventos
+    Home --> Equipos
+    Home --> Participantes
+    Home --> Lugares
+    Home --> Navigate
