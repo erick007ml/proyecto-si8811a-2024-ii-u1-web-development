@@ -1,4 +1,4 @@
-`# Juegos Florales - Proyecto React
+# Juegos Florales - Proyecto React
 
 Este proyecto es una plataforma web para visualizar las participaciones y los ganadores de cada facultad en los Juegos Florales organizados por la universidad. Está construido utilizando **React** para la interfaz de usuario y tiene como objetivo presentar de manera clara y atractiva los resultados de las competencias.
 
