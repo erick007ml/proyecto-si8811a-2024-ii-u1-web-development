@@ -7,6 +7,7 @@ import Eventos from '../pages/Eventos'
 import Home from '../pages/Home'
 import Lugares from '../pages/Lugares'
 import Participantes from '../pages/Participantes'
+import Login from '../pages/Login'
 
 function AppRouter() {
   const { status, checkAuthToken } = useAuthStore()
@@ -22,6 +23,7 @@ function AppRouter() {
   return (
     <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
           <Route path='/about' element={<About />} />
           <Route path='/eventos' element={<Eventos />} />
           <Route path='/equipos' element={<Equipos />} />

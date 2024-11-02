@@ -1,4 +1,4 @@
-import { FaMicrosoft } from 'react-icons/fa'
+import { FaGoogle, FaMicrosoft } from 'react-icons/fa'
 import background from '../assets/background_recomprimido.webp'
 
 const Login = () => {
@@ -31,6 +31,13 @@ const Login = () => {
         >
           <FaMicrosoft size={24} />
           Iniciar con Microsoft
+        </button>
+        <button
+          className='mt-2 w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors duration-300'
+          onClick={handleLogin}
+        >
+          <FaGoogle size={24} />
+          Iniciar con Google
         </button>
       </div>
 

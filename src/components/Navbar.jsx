@@ -37,6 +37,11 @@ const Navbar = () => (
             Lugares
           </Link>
         </li>
+        <li>
+          <Link to='/login' className='hover:text-yellow-400'>
+            Login
+          </Link>
+        </li>
       </ul>
     </div>
   </nav>
