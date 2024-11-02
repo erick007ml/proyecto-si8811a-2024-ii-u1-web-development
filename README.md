@@ -1,4 +1,4 @@
-# Juegos Florales - Proyecto React
+`# Juegos Florales - Proyecto React
 
 Este proyecto es una plataforma web para visualizar las participaciones y los ganadores de cada facultad en los Juegos Florales organizados por la universidad. Está construido utilizando **React** para la interfaz de usuario y tiene como objetivo presentar de manera clara y atractiva los resultados de las competencias.
 
@@ -105,6 +105,18 @@ proyecto-si8811a-2024-ii-u1-web-development/
 ├── vite.config.js        # Configuración de Vite para el entorno de desarrollo
 └── README.md             # Documentación del proyecto
 ```
+## Variables de Entorno 🌐
+
+Para el correcto funcionamiento de la aplicación en el entorno de desarrollo o producción, es necesario definir las siguientes variables de entorno. Asegúrate de configurarlas en un archivo `.env` o en el sistema donde se despliegue la aplicación:
+
+- `VITE_SERVER_EVENTO` - URL del servidor de eventos.
+- `VITE_SERVER_EQUIPO` - URL del servidor de equipos.
+- `VITE_SERVER_PARTICIPANTE` - URL del servidor de participantes.
+- `VITE_SERVER_LUGARES` - URL del servidor de lugares.
+- `VITE_SERVER_CATEGORIAS` - URL del servidor de categorías.
+
+Estas variables permiten que la aplicación se comunique con los distintos servicios que gestionan la información de los eventos, equipos, participantes, lugares y categorías en los Juegos Florales.
+
 
 ## Cómo Usar el Proyecto 🖥️
 
@@ -149,3 +161,4 @@ classDiagram
     VisualizarHome --> AccederInformacion
 
 
+`
