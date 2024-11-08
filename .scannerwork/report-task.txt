@@ -1,6 +1,0 @@
-projectKey=ProyectoWeb
-serverUrl=http://161.132.50.221:9000
-serverVersion=10.6.0.92116
-dashboardUrl=http://161.132.50.221:9000/dashboard?id=ProyectoWeb
-ceTaskId=3de5d29f-d288-4f68-90bc-fa4dfbbf8e38
-ceTaskUrl=http://161.132.50.221:9000/api/ce/task?id=3de5d29f-d288-4f68-90bc-fa4dfbbf8e38
