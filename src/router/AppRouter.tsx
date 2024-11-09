@@ -2,6 +2,8 @@ import { useAuthStore } from '@/hooks/useAuthStore'
 import About from '@/pages/About'
 import Equipo from '@/pages/Equipos/Equipo/Equipo'
 import Equipos from '@/pages/Equipos/Equipos'
+import AgregarEvento from '@/pages/Eventos/AgregarEvento'
+import EditarEvento from '@/pages/Eventos/EditarEvento'
 import Evento from '@/pages/Eventos/Evento/Evento'
 import Eventos from '@/pages/Eventos/Eventos'
 import Home from '@/pages/Home'
@@ -28,6 +30,8 @@ function AppRouter() {
       <Route path='/login' element={<Login />} />
       <Route path='/about' element={<About />} />
       <Route path='/eventos' element={<Eventos />} />
+      <Route path='/eventos/agregar' element={<AgregarEvento />} />
+      <Route path='/eventos/editar/:id' element={<EditarEvento />} />
       <Route path='/eventos/:id' element={<Evento />} />
       <Route path='/equipos' element={<Equipos />} />
       <Route path='/equipos/:id' element={<Equipo />} />

@@ -54,19 +54,7 @@ export default function Component() {
         <NavigationMenu className='hidden ml-auto lg:flex'>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuLink
-                href='/about'
-                className={`${
-                  isActive('/about')
-                    ? 'border-[1px] border-black/50 bg-accent'
-                    : ''
-                } group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50`}
-              >
-                Acerca de
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              {isAuthenticated ? (
+              {!isAuthenticated ? (
                 <NavigationMenuLink
                   href='/eventos'
                   className={`${
@@ -90,30 +78,29 @@ export default function Component() {
                     </Link>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className='grid gap-3 p-4 w-[200px]'>
+                    <div className='grid gap-3  w-[150px]'>
                       <Link
                         to='/eventos/agregar'
-                        className='block p-2 hover:bg-accent rounded-md'
+                        className='block px-4 py-2 hover:bg-accent rounded-md'
                       >
                         Agregar
-                      </Link>
-
-                      <Link
-                        to='/eventos/editar'
-                        className='block p-2 hover:bg-accent rounded-md'
-                      >
-                        Editar
-                      </Link>
-                      <Link
-                        to='/eventos/cuento'
-                        className='block p-2 hover:bg-accent rounded-md'
-                      >
-                        Eliminar
                       </Link>
                     </div>
                   </NavigationMenuContent>
                 </>
               )}
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                href='/about'
+                className={`${
+                  isActive('/about')
+                    ? 'border-[1px] border-black/50 bg-accent'
+                    : ''
+                } group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50`}
+              >
+                Acerca de
+              </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink
@@ -151,6 +138,20 @@ export default function Component() {
                 Lugares
               </NavigationMenuLink>
             </NavigationMenuItem>
+
+            {isAuthenticated ? (
+              <NavigationMenuItem>
+                <Button className='ml-2' onClick={handleLogout}>
+                  Logout
+                </Button>
+              </NavigationMenuItem>
+            ) : (
+              <NavigationMenuItem>
+                <Button className='ml-2' onClick={() => navigate('/login')}>
+                  Login
+                </Button>
+              </NavigationMenuItem>
+            )}
           </NavigationMenuList>
         </NavigationMenu>
         {/* Mobile Navigation */}
@@ -169,6 +170,7 @@ export default function Component() {
                 Selecciona una opción para continuar
               </SheetDescription>
             </SheetHeader>
+
             <nav className='flex flex-col gap-4'>
               <Link
                 to='/about'
@@ -206,6 +208,7 @@ export default function Component() {
               >
                 Participantes
               </Link>
+
               <Link
                 to='/lugares'
                 onClick={() => setIsOpen(false)}
@@ -216,22 +219,17 @@ export default function Component() {
                 Lugares
               </Link>
               {isAuthenticated ? (
-                <Button onClick={handleLogout}>Logout</Button>
+                <Button className='ml-2' onClick={handleLogout}>
+                  Logout
+                </Button>
               ) : (
-                <Link to='/login'>Login</Link>
+                <Button className='ml-2' onClick={() => navigate('/login')}>
+                  Login
+                </Button>
               )}
             </nav>
           </SheetContent>
         </Sheet>
-        {isAuthenticated ? (
-          <Button className='ml-2' onClick={handleLogout}>
-            Logout
-          </Button>
-        ) : (
-          <Button className='ml-2' onClick={() => navigate('/login')}>
-            Login
-          </Button>
-        )}
       </div>
     </header>
   )
