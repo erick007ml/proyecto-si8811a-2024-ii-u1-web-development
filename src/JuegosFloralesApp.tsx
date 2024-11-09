@@ -2,6 +2,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 import AppRouter from './router/AppRouter'
+import { Toaster } from '@/components/ui/toaster'
 
 export const JuegosFloralesApp = () => {
   return (
@@ -15,6 +16,7 @@ export const JuegosFloralesApp = () => {
           <AppRouter />
         </BrowserRouter>
       </Provider>
+      <Toaster />
     </>
   )
 }
