@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
+import { getEventoById, updateEvento } from '@/api/services/eventoApi'
+import DefaultLayout from '@/components/layouts/DefaultLayout'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -20,7 +18,6 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
 import {
   Select,
   SelectContent,
@@ -28,11 +25,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
 import { useToast } from '@/hooks/use-toast'
-import DefaultLayout from '@/components/layouts/DefaultLayout'
-import { createEvento, getEventoById } from '@/api/services/eventoApi'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Evento as EventoType } from '@/interfaces/Evento'
+import * as z from 'zod'
 
 const formSchema = z.object({
   nombre: z.string().min(2, {
@@ -55,7 +54,6 @@ const formSchema = z.object({
 
 export default function EditarEvento() {
   const { id } = useParams()
-  const [evento, setEvento] = useState<EventoType>()
   const navigate = useNavigate()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
@@ -77,9 +75,9 @@ export default function EditarEvento() {
       if (!id) return
       const data = await getEventoById(id)
       console.log(data)
-      setEvento(data)
       const formatDate = (date: Date) => {
-        return new Date(date).toISOString().split('T')[0]
+        const isoString = new Date(date).toISOString()
+        return isoString.slice(0, 16)
       }
       form.reset({
         nombre: data.nombre,
@@ -131,7 +129,9 @@ export default function EditarEvento() {
         })
         return
       }
-      await createEvento({
+      if (!id) return
+      await updateEvento(id, {
+        id,
         descripcion,
         facultad,
         fechaInicio: newDateInicio,
@@ -141,8 +141,8 @@ export default function EditarEvento() {
       })
       console.log(values)
       toast({
-        title: 'Evento creado',
-        description: 'El evento ha sido creado exitosamente.',
+        title: 'Evento actualizado',
+        description: 'El evento ha sido actualizado exitosamente.',
       })
       setTimeout(() => {
         navigate('/eventos')
@@ -152,7 +152,7 @@ export default function EditarEvento() {
       toast({
         title: 'Error',
         description:
-          'Hubo un problema al crear el evento. Por favor, intente nuevamente.',
+          'Hubo un problema al actualizar el evento. Por favor, intente nuevamente.',
         variant: 'destructive',
       })
     } finally {
@@ -225,7 +225,7 @@ export default function EditarEvento() {
                       <FormLabel>Facultad</FormLabel>
                       <Select
                         onValueChange={field.onChange}
-                        defaultValue={evento?.facultad}
+                        value={field.value || ''}
                       >
                         <FormControl>
                           <SelectTrigger>
@@ -294,7 +294,7 @@ export default function EditarEvento() {
                     className='w-full'
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Creando evento...' : 'Crear Evento'}
+                    {isSubmitting ? 'Actualizando ...' : 'Editar Evento'}
                   </Button>
                 </CardFooter>
               </form>

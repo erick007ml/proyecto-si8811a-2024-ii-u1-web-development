@@ -40,3 +40,15 @@ export const deleteEvento = async (id: string) => {
     throw error
   }
 }
+
+export const updateEvento = async (id: string, evento: Evento) => {
+  console.log(id, evento)
+  try {
+    const response = await axiosEvento.put('/Evento/' + id, evento)
+    console.log(response.data, 'Evento actualizado')
+    return response.data
+  } catch (error) {
+    console.error('Error updating event:', error)
+    throw error
+  }
+}
