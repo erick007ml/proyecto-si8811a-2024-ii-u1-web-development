@@ -108,12 +108,14 @@ proyecto-si8811a-2024-ii-u1-web-development/
 
 ## Cómo Usar el Proyecto 🖥️
 
-1. Inicia la aplicación en modo desarrollo:
-   ```bash
-   npm start
-   ```
-2. Abre [http://localhost:3000](http://localhost:3000) para ver la aplicación en tu navegador.
+1. Asegúrate de tener Docker instalado.
+2. Abre una terminal.
+3. Ejecuta el siguiente comando:
 
+```bash
+docker run -d -p 8080:80 --name juegosflorales ghcr.io/upt-faing-epis/proyecto-si8811a-2024-ii-u1-web-development/juegosflorales:latest
+```
+4. Abre [http://localhost:8080](http://localhost:8080/) para ver la aplicación en tu navegador.
 
 
 ```mermaid
@@ -147,9 +149,3 @@ classDiagram
     VisualizarHome --> VerParticipantes
     VisualizarHome --> ExplorarLugares
     VisualizarHome --> AccederInformacion
-
-
-
-
-
-   
