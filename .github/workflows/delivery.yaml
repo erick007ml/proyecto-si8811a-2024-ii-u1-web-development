@@ -1,0 +1,38 @@
+name: Manual Deployment and Testing
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull Docker image
+        run: docker pull ghcr.io/upt-faing-epis/proyecto-si8811a-2024-ii-u1-web-development/juegosflorales:latest
+
+      - name: Run Docker container
+        run: |
+          docker run -d -p 8080:80 --name react-app ghcr.io/upt-faing-epis/proyecto-si8811a-2024-ii-u1-web-development/juegosflorales:latest
+
+      - name: Wait for the app to be ready
+        run: |
+          until curl -s http://localhost:8080; do
+            echo "Waiting for the React app to be ready..."
+            sleep 5
+          done
+
+      # Paso 6: Probar que la aplicación está funcionando
+      - name: Test React app is running
+        run: |
+          curl -I http://localhost:8080
