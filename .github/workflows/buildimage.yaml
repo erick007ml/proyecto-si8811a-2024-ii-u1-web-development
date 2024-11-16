@@ -29,4 +29,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/erick007ml/juegosflorales:latest
+          tags: ghcr.io/upt-faing-epis/proyecto-si8811a-2024-ii-u1-web-development/juegosflorales:latest
