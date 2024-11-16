@@ -149,9 +149,3 @@ classDiagram
     VisualizarHome --> VerParticipantes
     VisualizarHome --> ExplorarLugares
     VisualizarHome --> AccederInformacion
-
-
-
-
-
-   
