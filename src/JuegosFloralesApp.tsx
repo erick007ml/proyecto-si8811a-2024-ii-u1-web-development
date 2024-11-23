@@ -1,9 +1,8 @@
-import { BrowserRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import { store } from './store/store'
-import AppRouter from './router/AppRouter'
 import { Toaster } from '@/components/ui/toaster'
-
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import AppRouter from './router/AppRouter'
+import { store } from './store/store'
 export const JuegosFloralesApp = () => {
   return (
     <>
