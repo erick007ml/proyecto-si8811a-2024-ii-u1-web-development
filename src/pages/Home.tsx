@@ -4,6 +4,7 @@ import CountdownTimer from '@/components/CountdownTimer'
 const Home = () => {
   const startDate = new Date('2024-10-09T00:00:00')
   const endDate = new Date('2024-10-10T00:00:00')
+
   return (
     <div className='background w-screen min-h-1/2 pb-10 text-black font-sans relative'>
       <li></li>

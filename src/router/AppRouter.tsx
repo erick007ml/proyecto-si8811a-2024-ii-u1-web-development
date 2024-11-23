@@ -1,3 +1,4 @@
+import Callback from '@/components/Callback'
 import { useAuthStore } from '@/hooks/useAuthStore'
 import About from '@/pages/About'
 import Equipo from '@/pages/Equipos/Equipo/Equipo'
@@ -27,6 +28,7 @@ function AppRouter() {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
+      <Route path='/callback' element={<Callback />} />
       <Route path='/login' element={<Login />} />
       <Route path='/about' element={<About />} />
       <Route path='/eventos' element={<Eventos />} />
