@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import '@/background.css'
-import CountdownTimer from '@/components/CountdownTimer'
+import { TimerFG } from 'timerfg'
 const Home = () => {
   const startDate = new Date('2024-10-09T00:00:00')
   const endDate = new Date('2024-10-10T00:00:00')
@@ -110,7 +110,7 @@ const Home = () => {
           </div>
           <div className=' hidden md:flex justify-center items-center w-full mt-8'>
             <div className='w-auto'>
-              <CountdownTimer
+              <TimerFG
                 className='text-center w-auto '
                 startDate={startDate}
                 endDate={endDate}

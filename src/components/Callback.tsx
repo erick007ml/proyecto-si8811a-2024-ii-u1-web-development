@@ -11,7 +11,7 @@ const Callback = () => {
 
     if (token) {
       const decoded = jwtDecode(token)
-
+      console.log({token})
       localStorage.setItem('authToken', token)
       localStorage.setItem('user', JSON.stringify(decoded))
 
