@@ -1,19 +1,9 @@
 import { FaGoogle, FaMicrosoft } from 'react-icons/fa'
 import background from '../assets/background_recomprimido.webp'
 import logoJuegosFlorales from '../assets/logo-juegosflorales.png'
-import { useNavigate } from 'react-router-dom'
-import { useAuthStore } from '@/hooks/useAuthStore'
 
 const Login = () => {
-  const navigate = useNavigate()
-  const { loginWithMicrosoft } = useAuthStore()
 
-
-  const handleLoginWithGoogle = () => {
-    // window.location.href = 'http://localhost:5000/login'
-    loginWithMicrosoft()
-    navigate('/')
-  }
 
   return (
     <div
