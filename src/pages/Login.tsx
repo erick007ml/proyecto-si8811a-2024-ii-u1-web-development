@@ -1,23 +1,9 @@
 import { FaGoogle, FaMicrosoft } from 'react-icons/fa'
 import background from '../assets/background_recomprimido.webp'
 import logoJuegosFlorales from '../assets/logo-juegosflorales.png'
-import { useNavigate } from 'react-router-dom'
-import { useAuthStore } from '@/hooks/useAuthStore'
 
 const Login = () => {
-  const navigate = useNavigate()
-  const { loginWithMicrosoft } = useAuthStore()
 
-  const handleLoginWithMicrosoft = () => {
-    // window.location.href = 'http://localhost:5000/login'}
-    loginWithMicrosoft()
-    navigate('/')
-  }
-  const handleLoginWithGoogle = () => {
-    // window.location.href = 'http://localhost:5000/login'}
-    loginWithMicrosoft()
-    navigate('/')
-  }
 
   return (
     <div
@@ -38,20 +24,20 @@ const Login = () => {
         <p className='text-center mb-4 text-gray-600'>
           Ingresa haciendo uso del correo otorgado por la Universidad.
         </p>
-        <button
+        <a
+          href='https://login-cr5q.onrender.com/login'
           className='w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors duration-300'
-          onClick={handleLoginWithMicrosoft}
         >
           <FaMicrosoft size={24} />
           Iniciar con Microsoft
-        </button>
-        <button
+        </a>
+        <a
+           href='https://login-cr5q.onrender.com/login'
           className='mt-2 w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors duration-300'
-          onClick={handleLoginWithGoogle}
         >
           <FaGoogle size={24} />
           Iniciar con Google
-        </button>
+        </a>
       </div>
 
       <a

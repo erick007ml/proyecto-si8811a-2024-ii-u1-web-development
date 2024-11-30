@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export type authStatusType = 'checking' | 'authenticated' | 'not-authenticated'
 
 const initialState = {
-  status: 'authenticated' as authStatusType,
+  status: 'not-authenticated' as authStatusType,
   user: {},
   errorMessage: undefined,
 }

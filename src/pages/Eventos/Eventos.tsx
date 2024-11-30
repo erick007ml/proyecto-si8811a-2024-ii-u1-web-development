@@ -36,7 +36,7 @@ export default function Eventos() {
       setEventos(data)
       setTimeout(() => {
         setIsLoading(false)
-      }, 800)
+      }, 200)
     }
     fetchEventos()
   }, [])
