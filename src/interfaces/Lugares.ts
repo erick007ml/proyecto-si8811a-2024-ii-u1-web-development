@@ -1,4 +1,4 @@
-export interface Lugares {
+export interface Lugar {
   _id: string
   _rev: string
   nombre_lugar: string

@@ -1,22 +1,10 @@
 import { getLugares } from '@/api/services/lugaresApi';
 import DefaultLayout from '@/components/layouts/DefaultLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Lugares as LugaresTypes } from '@/interfaces/Lugares';
+import { type Lugar } from '@/interfaces/Lugares';
 import { MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-// Interfaz del lugar (asegúrate de que coincida con tu JSON)
-interface Lugar {
-  _id: string;
-  nombre_lugar: string;
-  descripcion: string;
-  direccion_id: string;
-  capacidad: number;
-  latitud: number;
-  longitud: number;
-  id_categoria: string;
-  estado: number;
-}
 
 const Lugares = () => {
   const [lugares, setLugares] = useState<Lugar[]>([]);
@@ -30,18 +18,17 @@ const Lugares = () => {
     fetchLugares();
   }, []);
 
-  // Función para convertir coordenadas decimales a formato DMS
-  const decimalToDMS = (decimal: number, isLat: boolean): string => {
-    const absDecimal = Math.abs(decimal);
-    const degrees = Math.floor(absDecimal);
-    const minutesDecimal = (absDecimal - degrees) * 60;
-    const minutes = Math.floor(minutesDecimal);
-    const seconds = ((minutesDecimal - minutes) * 60).toFixed(2);
-    const direction = decimal >= 0 
-      ? (isLat ? 'N' : 'E') 
-      : (isLat ? 'S' : 'W');
-    return `${degrees}°${minutes}'${seconds}"${direction}`;
-  };
+  // const decimalToDMS = (decimal: number, isLat: boolean): string => {
+  //   const absDecimal = Math.abs(decimal);
+  //   const degrees = Math.floor(absDecimal);
+  //   const minutesDecimal = (absDecimal - degrees) * 60;
+  //   const minutes = Math.floor(minutesDecimal);
+  //   const seconds = ((minutesDecimal - minutes) * 60).toFixed(2);
+  //   const direction = decimal >= 0 
+  //     ? (isLat ? 'N' : 'E') 
+  //     : (isLat ? 'S' : 'W');
+  //   return `${degrees}°${minutes}'${seconds}"${direction}`;
+  // };
 
   return (
     <DefaultLayout>
@@ -50,9 +37,9 @@ const Lugares = () => {
         <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
           {lugares.map((lugar) => {
             // Convertir coordenadas a DMS
-            const latDMS = decimalToDMS(lugar.latitud, true);
-            const lonDMS = decimalToDMS(lugar.longitud, false);
-            const googleMapsLink = `https://www.google.com/maps/place/${latDMS}+${lonDMS}/@${lugar.latitud},${lugar.longitud},18z`;
+            // const latDMS = decimalToDMS(lugar.latitud, true);
+            // const lonDMS = decimalToDMS(lugar.longitud, false);
+            // const googleMapsLink = `https://www.google.com/maps/place/${latDMS}+${lonDMS}/@${lugar.latitud},${lugar.longitud},18z`;
 
             return (
               <Card key={lugar._id} className='overflow-hidden'>
